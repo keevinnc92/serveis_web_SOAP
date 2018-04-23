@@ -1,0 +1,47 @@
+<?xml version ='1.0' encoding='UTF-8' ?>
+<definitions name='Scramble'
+	targetNamespace='http://localhost/SOAP_CHONG/servidor/nombre_completo.wsdl'
+	xmlns:tns='http://localhost/SOAP_CHONG/servidor/nombre_completo.wsdl'
+	xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns='http://schemas.xmlsoap.org/wsdl/'>
+
+	<message name='nombre_completoRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+		<part name = 'symbol2' type='xsd:string'/>
+		<part name = 'symbol3' type='xsd:string'/>
+	</message>
+	<message name='nombre_completoResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message>
+
+
+	<portType name='ScramblePortType'>
+		<operation name='nombre_completo'>
+			<input message='tns:nombre_completoRequest'/>
+			<output message='tns:nombre_completoResponse'/>
+		</operation>
+
+	</portType>
+
+	<binding name = 'ScrambleBinding' type='tns:ScramblePortType'>
+			<soap:binding style='rpc'
+				transport='http://schemas.xmlsoap.org/soap/http'/>
+			<operation name='nombre_completo'>
+				<soap:operation soapAction='urn:localhost-scramble#nombre_completo'/>
+				<input>
+					<soap:body use='encoded' namespace='urn:localhost-scramble'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</input>
+				<output>
+					<soap:body use='encoded' namespace='urn:localhost-scramble'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</output>
+			</operation>
+
+		</binding>
+		<service name = 'ScrambeService'>
+			<port name='ScramblePort' binding='ScrambleBinding'>
+				<soap:address location='http://localhost/SOAP_CHONG/servidor/nombre_completo.php'/>
+			</port>
+		</service>
+</definitions>

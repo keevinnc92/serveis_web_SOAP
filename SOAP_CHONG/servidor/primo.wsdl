@@ -1,0 +1,66 @@
+<?xml version ='1.0' encoding='UTF-8' ?>
+<definitions name='Scramble'
+	targetNamespace='http://localhost/SOAP_CHONG/servidor/primo.wsdl'
+	xmlns:tns='http://localhost/SOAP_CHONG/servidor/primo.wsdl'
+	xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns='http://schemas.xmlsoap.org/wsdl/'>
+
+	<!-- <message name='sumarRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+		<part name = 'symbol2' type='xsd:string'/>
+	</message>
+	<message name='sumarResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message> -->
+
+
+	<message name='primoRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+	</message>
+	<message name='primoResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message>
+
+
+
+
+	<!-- <message name='restarRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+		<part name = 'symbol2' type='xsd:string'/>
+	</message>
+	<message name='restarResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message> -->
+
+	<portType name='ScramblePortType'>
+		<operation name='primo'>
+			<input message='tns:primoRequest'/>
+			<output message='tns:primoResponse'/>
+		</operation>
+
+	</portType>
+
+	<binding name = 'ScrambleBinding' type='tns:ScramblePortType'>
+			<soap:binding style='rpc'
+				transport='http://schemas.xmlsoap.org/soap/http'/>
+
+
+			<operation name='primo'>
+				<soap:operation soapAction='urn:localhost-primo#primo'/>
+				<input>
+					<soap:body use='encoded' namespace='urn:localhost-primo'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</input>
+				<output>
+					<soap:body use='encoded' namespace='urn:localhost-primo'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</output>
+			</operation>
+
+		</binding>
+		<service name = 'ScrambeService'>
+			<port name='ScramblePort' binding='ScrambleBinding'>
+				<soap:address location='http://localhost/SOAP_CHONG/servidor/primo.php'/>
+			</port>
+		</service>
+</definitions>

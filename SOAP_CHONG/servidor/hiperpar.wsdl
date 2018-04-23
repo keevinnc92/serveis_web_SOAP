@@ -1,0 +1,66 @@
+<?xml version ='1.0' encoding='UTF-8' ?>
+<definitions name='Scramble'
+	targetNamespace='http://localhost/SOAP_CHONG/servidor/hiperpar.wsdl'
+	xmlns:tns='http://localhost/SOAP_CHONG/servidor/hiperpar.wsdl'
+	xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns='http://schemas.xmlsoap.org/wsdl/'>
+
+	<!-- <message name='sumarRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+		<part name = 'symbol2' type='xsd:string'/>
+	</message>
+	<message name='sumarResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message> -->
+
+
+	<message name='hiperparRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+	</message>
+	<message name='hiperparResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message>
+
+
+
+
+	<!-- <message name='restarRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+		<part name = 'symbol2' type='xsd:string'/>
+	</message>
+	<message name='restarResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message> -->
+
+	<portType name='ScramblePortType'>
+		<operation name='hiperpar'>
+			<input message='tns:hiperparRequest'/>
+			<output message='tns:hiperparResponse'/>
+		</operation>
+
+	</portType>
+
+	<binding name = 'ScrambleBinding' type='tns:ScramblePortType'>
+			<soap:binding style='rpc'
+				transport='http://schemas.xmlsoap.org/soap/http'/>
+
+
+			<operation name='hiperpar'>
+				<soap:operation soapAction='urn:localhost-hiperpar#hiperpar'/>
+				<input>
+					<soap:body use='encoded' namespace='urn:localhost-hiperpar'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</input>
+				<output>
+					<soap:body use='encoded' namespace='urn:localhost-hiperpar'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</output>
+			</operation>
+
+		</binding>
+		<service name = 'ScrambeService'>
+			<port name='ScramblePort' binding='ScrambleBinding'>
+				<soap:address location='http://localhost/SOAP_CHONG/servidor/hiperpar.php'/>
+			</port>
+		</service>
+</definitions>

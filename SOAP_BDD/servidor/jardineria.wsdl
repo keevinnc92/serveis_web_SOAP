@@ -1,0 +1,129 @@
+<?xml version ='1.0' encoding='UTF-8' ?>
+<definitions name='Scramble'
+	targetNamespace='http://localhost/SOAP_BDD/servidor/jardineria.wsdl'
+	xmlns:tns='http://localhost/SOAP_BDD/servidor/jardineria.wsdl'
+	xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns='http://schemas.xmlsoap.org/wsdl/'>
+
+	<!-- <message name='sumarRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+		<part name = 'symbol2' type='xsd:string'/>
+	</message>
+	<message name='sumarResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message> -->
+
+
+	<message name='jardineriaRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+	</message>
+	<message name='jardineriaResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message>
+
+	<message name='jardineriaDosRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+	</message>
+	<message name='jardineriaDosResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message>
+
+	<message name='jardineriaTresRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+	</message>
+	<message name='jardineriaTresResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message>
+
+	<message name='jardineriaCuatroRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+	</message>
+	<message name='jardineriaCuatroResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message>
+	<!-- <message name='restarRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+		<part name = 'symbol2' type='xsd:string'/>
+	</message>
+	<message name='restarResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message> -->
+
+	<portType name='ScramblePortType'>
+		<operation name='jardineria'>
+			<input message='tns:jardineriaRequest'/>
+			<output message='tns:jardineriaResponse'/>
+		</operation>
+		<operation name='jardineriaDos'>
+			<input message='tns:jardineriaDosRequest'/>
+			<output message='tns:jardineriaDosResponse'/>
+		</operation>
+		<operation name='jardineriaTres'>
+			<input message='tns:jardineriaTresRequest'/>
+			<output message='tns:jardineriaTresResponse'/>
+		</operation>
+		<operation name='jardineriaCuatro'>
+			<input message='tns:jardineriaCuatroRequest'/>
+			<output message='tns:jardineriaCuatroResponse'/>
+		</operation>
+	</portType>
+
+	<binding name = 'ScrambleBinding' type='tns:ScramblePortType'>
+			<soap:binding style='rpc'
+				transport='http://schemas.xmlsoap.org/soap/http'/>
+
+
+			<operation name='jardineria'>
+				<soap:operation soapAction='urn:localhost-jardineria#jardineria'/>
+				<input>
+					<soap:body use='encoded' namespace='urn:localhost-jardineria'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</input>
+				<output>
+					<soap:body use='encoded' namespace='urn:localhost-jardineria'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</output>
+			</operation>
+
+
+			<operation name='jardineriaDos'>
+				<soap:operation soapAction='urn:localhost-jardineria#jardineriaDos'/>
+				<input>
+					<soap:body use='encoded' namespace='urn:localhost-jardineria'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</input>
+				<output>
+					<soap:body use='encoded' namespace='urn:localhost-jardineria'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</output>
+			</operation>
+
+			<operation name='jardineriaTres'>
+				<soap:operation soapAction='urn:localhost-jardineria#jardineriaTres'/>
+				<input>
+					<soap:body use='encoded' namespace='urn:localhost-jardineria'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</input>
+				<output>
+					<soap:body use='encoded' namespace='urn:localhost-jardineria'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</output>
+			</operation>
+			<operation name='jardineriaCuatro'>
+				<soap:operation soapAction='urn:localhost-jardineria#jardineriaCuatro'/>
+				<input>
+					<soap:body use='encoded' namespace='urn:localhost-jardineria'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</input>
+				<output>
+					<soap:body use='encoded' namespace='urn:localhost-jardineria'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</output>
+			</operation>
+		</binding>
+		<service name = 'ScrambeService'>
+			<port name='ScramblePort' binding='ScrambleBinding'>
+				<soap:address location='http://localhost/SOAP_BDD/servidor/jardineria.php'/>
+			</port>
+		</service>
+</definitions>

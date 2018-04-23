@@ -1,0 +1,66 @@
+<?xml version ='1.0' encoding='UTF-8' ?>
+<definitions name='Scramble'
+	targetNamespace='http://localhost/SOAP_CHONG/servidor/dni.wsdl'
+	xmlns:tns='http://localhost/SOAP_CHONG/servidor/dni.wsdl'
+	xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns='http://schemas.xmlsoap.org/wsdl/'>
+
+	<!-- <message name='sumarRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+		<part name = 'symbol2' type='xsd:string'/>
+	</message>
+	<message name='sumarResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message> -->
+
+
+	<message name='dniRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+	</message>
+	<message name='dniResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message>
+
+
+
+
+	<!-- <message name='restarRequest'>
+		<part name = 'symbol' type='xsd:string'/>
+		<part name = 'symbol2' type='xsd:string'/>
+	</message>
+	<message name='restarResponse'>
+		<part name='Result' type='xsd:string'/>
+	</message> -->
+
+	<portType name='ScramblePortType'>
+		<operation name='dni'>
+			<input message='tns:dniRequest'/>
+			<output message='tns:dniResponse'/>
+		</operation>
+
+	</portType>
+
+	<binding name = 'ScrambleBinding' type='tns:ScramblePortType'>
+			<soap:binding style='rpc'
+				transport='http://schemas.xmlsoap.org/soap/http'/>
+
+
+			<operation name='dni'>
+				<soap:operation soapAction='urn:localhost-dni#dni'/>
+				<input>
+					<soap:body use='encoded' namespace='urn:localhost-dni'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</input>
+				<output>
+					<soap:body use='encoded' namespace='urn:localhost-dni'
+						encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+				</output>
+			</operation>
+
+		</binding>
+		<service name = 'ScrambeService'>
+			<port name='ScramblePort' binding='ScrambleBinding'>
+				<soap:address location='http://localhost/SOAP_CHONG/servidor/dni.php'/>
+			</port>
+		</service>
+</definitions>
